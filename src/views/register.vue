@@ -24,27 +24,14 @@
             <div class="box">
                 <div class="logo-wrapper">
                     <h1 class="title">TraderCat</h1><span class="subtitle">您身边的贸易专家</span>
-                    <a class="link" href="register">注册账号</a>
+                    <a class="link" href="/">登录</a>
                 </div>
                 <form action="" autocomplete="off">
-                    <input name="account" class="input-box" type="text" value="" placeholder="手机号/注册邮箱">
+                    <input name="account" class="input-box" type="text" value="" placeholder="账号">
                     <input name="password" class="input-box" type="password" value="" placeholder="密码">
-                    <input name="captcha" class="input-box" type="text" value="" placeholder="验证码">
-                    <div class="options">
-                        <Checkbox v-model="single" style="float: left;">&nbsp;记住账号</Checkbox>
-                        <a href="/reset" style="float: right;" target="_blank">忘记密码？</a>
-                    </div>
-                    <button class="action-btn login" type="button">登录</button>
+                    <input name="nickname" class="input-box" type="text" value="" placeholder="昵称">
+                    <button class="action-btn register" type="button">注册</button>
                 </form>
-                <div class="third-party">
-                    <div class="bar-wrapper">
-                        <div class="bar"><span class="title">或者其它账号登录</span></div>
-                    </div>
-                    <ul class="buttons">
-                        <li style="float: left;"><button class="wechat action-btn" type="button">微信登录</button></li>
-                        <li style="float: right;"><button class="weibo action-btn" type="button">微博登录</button></li>
-                    </ul>
-                </div>
             </div>
             <div class="footer">
                 Copyright &copy; 2017-2018 <a href="/">TraderCat</a>.

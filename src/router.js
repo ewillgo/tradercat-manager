@@ -7,6 +7,13 @@ const routers = [
         component: (resolve) => require(['./views/index.vue'], resolve)
     },
     {
+        path: '/register',
+        meta: {
+            title: '注册账号'
+        },
+        component: (resolve) => require(['./views/register.vue'], resolve)
+    },
+    {
         path: '/dashboard',
         meta: {
             title: '主面板'

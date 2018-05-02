@@ -17,18 +17,14 @@ const RouterConfig = {
 const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
-    if (to.path !== '/') {
-        iView.LoadingBar.start();
-    }
+    iView.LoadingBar.start();
     Util.title(to.meta.title);
     next();
 });
 
 router.afterEach((to, from, next) => {
-    if (to.path !== '/') {
-        iView.LoadingBar.finish();
-        window.scrollTo(0, 0);
-    }
+    iView.LoadingBar.finish();
+    window.scrollTo(0, 0);
 });
 
 new Vue({
