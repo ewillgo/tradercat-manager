@@ -29,7 +29,6 @@ router.afterEach((to, from, next) => {
         iView.LoadingBar.finish();
         window.scrollTo(0, 0);
     }
-    next();
 });
 
 new Vue({
