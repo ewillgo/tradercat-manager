@@ -8,10 +8,10 @@ util.title = function (title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://cas.sportsdb.cc' :
+    'http://uas.sportsdb.cc' :
     env === 'production' ?
         'https://www.url.com' :
-        'http://cas.sportsdb.cc';
+        'http://uas.sportsdb.cc';
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,
