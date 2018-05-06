@@ -8,14 +8,13 @@ util.title = function (title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://uas.sportsdb.cc' :
+    'http://manager.sportsdb.cc:9001' :
     env === 'production' ?
-        'https://www.url.com' :
-        'http://uas.sportsdb.cc';
+        'http://manager.tradercat.net' :
+        'http://';
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,
-    // headers: {'Access-Control-Allow-Origin': 'cas.sportsdb.cc'},
     timeout: 30000
 });
 

@@ -27,7 +27,7 @@
                     <a class="link" href="register">注册账号</a>
                 </div>
                 <form action="" autocomplete="off">
-                    <input name="account" class="input-box" type="text" value="" placeholder="手机号/注册邮箱">
+                    <input name="account" class="input-box" type="text" value="" placeholder="电子邮箱">
                     <input name="password" class="input-box" type="password" value="" placeholder="密码">
                     <input name="captcha" class="input-box" type="text" value="" placeholder="验证码">
                     <div class="options">

@@ -27,10 +27,12 @@
                     <a class="link" href="/">登录</a>
                 </div>
                 <form action="" autocomplete="off">
-                    <input name="account" class="input-box" type="text" value="" placeholder="账号">
-                    <input name="password" class="input-box" type="password" value="" placeholder="密码">
+                    <input name="account" class="input-box" type="text" value="" placeholder="电子邮箱">
                     <input name="nickname" class="input-box" type="text" value="" placeholder="昵称">
-                    <button class="action-btn register" type="button">注册</button>
+                    <input name="password" class="input-box" type="password" value="" placeholder="输入密码">
+                    <input name="password-confirm" class="input-box" type="password" value="" placeholder="再次输入密码">
+                    <input name="captcha" class="input-box" type="text" value="" placeholder="验证码">
+                    <button class="action-btn register" type="button">注册账号</button>
                 </form>
             </div>
             <div class="footer">

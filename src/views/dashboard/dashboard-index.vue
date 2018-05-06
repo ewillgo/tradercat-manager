@@ -10,7 +10,13 @@
     import Util from '../../libs/util';
     export default {
         mounted() {
-            Util.ajax.get('/api/user/login').then(function (response) {
+            console.log("=");
+            Util.ajax.get('/user/login', {
+                params: {
+                    username: "abc",
+                    password: "asdf"
+                }
+            }).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
