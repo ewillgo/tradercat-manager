@@ -8,14 +8,13 @@
 </template>
 <script>
     import Util from '../../libs/util';
+
     export default {
         mounted() {
             console.log("=");
-            Util.ajax.get('/user/login', {
-                params: {
-                    username: "abc",
-                    password: "asdf"
-                }
+            Util.ajax.post('/user/login', {
+                username: "abc",
+                password: "asdf"
             }).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
