@@ -26,15 +26,16 @@
                     <h1 class="title">TraderCat</h1><span class="subtitle">您身边的贸易专家</span>
                     <a class="link" href="register">注册账号</a>
                 </div>
-                <form action="" autocomplete="off">
-                    <input name="account" class="input-box" type="text" value="" placeholder="电子邮箱">
-                    <input name="password" class="input-box" type="password" value="" placeholder="密码">
-                    <input name="captcha" class="input-box" type="text" value="" placeholder="验证码">
+                <form action="" autocomplete="off" @submit.prevent="login">
+                    <a @click="changeCaptcha" title="换一张"><img :src="captchaUrl" class="captcha"></a>
+                    <input name="username" class="input-box" type="text" v-model="username" placeholder="电子邮箱">
+                    <input name="password" class="input-box" type="password" v-model="password" placeholder="密码">
+                    <input name="captcha" class="input-box" type="text" v-model="captcha" placeholder="验证码">
                     <div class="options">
-                        <Checkbox v-model="single" style="float: left;">&nbsp;记住账号</Checkbox>
+                        <Checkbox v-model="rememberUsername" style="float: left;">&nbsp;记住账号</Checkbox>
                         <a href="/reset" style="float: right;" target="_blank">忘记密码？</a>
                     </div>
-                    <button class="action-btn login" type="button">登录</button>
+                    <button class="action-btn login" type="submit">登录</button>
                 </form>
                 <div class="third-party">
                     <div class="bar-wrapper">
@@ -57,10 +58,41 @@
 
     import Vue from 'vue';
     import VueParticles from 'vue-particles';
+    import Util from '../libs/util';
 
     Vue.use(VueParticles);
 
+    let CAPTCHA_URL = "http://manager.sportsdb.cc:9001/user/loginCaptcha";
+
     export default {
-        methods: {}
+        data() {
+            return {
+                captchaUrl: CAPTCHA_URL,
+                username: "",
+                password: "",
+                captcha: "",
+                rememberUsername: false
+            }
+        },
+        methods: {
+            changeCaptcha() {
+                console.log(this);
+                Vue.set(this, "captchaUrl", CAPTCHA_URL + "?t=" + new Date().getTime());
+                // this.captchaUrl = CAPTCHA_URL + "?t=" + new Date().getTime()
+            },
+            login(event) {
+                let methods = this.$options.methods;
+                Util.ajax.post("/user/login", {
+                    username: this.username,
+                    password: this.password,
+                    captcha: this.captcha
+                }).then(function (response) {
+                    console.log(response.data);
+                    methods.changeCaptcha();
+                }).catch(function (error) {
+                    console.log(error);
+                })
+            }
+        }
     };
 </script>

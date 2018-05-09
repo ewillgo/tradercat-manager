@@ -2,7 +2,7 @@ a, button { transition: all .2s ease; }
 
 .homepage { position: fixed; width: 100%; height: 100%; background-color: #FEFEFE; }
 .homepage .homepage-center { width: 400px; position: fixed; z-index: 999; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.homepage .homepage-center .box { overflow: auto; padding: 15px; border-radius: 2px; background-color: rgba(0, 0, 0, 0.05); }
+.homepage .homepage-center .box { position: relative; overflow: auto; padding: 15px; border-radius: 2px; background-color: rgba(0, 0, 0, 0.05); }
 .homepage .homepage-center .box .logo-wrapper { margin-bottom: 8px; }
 .homepage .homepage-center .box .logo-wrapper .title { font-size: 2.0em; }
 .homepage .homepage-center .box .logo-wrapper .subtitle { display: inline-block; text-indent: 4px; }
@@ -22,6 +22,7 @@ a, button { transition: all .2s ease; }
 .homepage .homepage-center .box .third-party .bar-wrapper .title { display: inline-block; top: -8px; position: relative; color: #999; }
 .homepage .homepage-center .box .action-btn { width: 100%; padding: 12px; box-sizing: border-box; border: none; background-color: #2D8CF0; color: #FFF; margin-top: 15px; cursor: pointer; border-radius: 2px; outline: none; }
 .homepage .homepage-center .box .action-btn:hover { background-color: #57A3F3; }
+.homepage .homepage-center .box .captcha { position: absolute; top: 192px; right: 18px; }
 .homepage .homepage-center .footer { margin-top: 20px; list-style: none; text-align: center; color: #999; }
 .homepage .homepage-center .footer a { color: #999; }
 .homepage .homepage-center .footer a:hover { text-decoration: underline; }
