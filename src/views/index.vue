@@ -76,19 +76,22 @@
         },
         methods: {
             changeCaptcha() {
-                console.log(this);
-                Vue.set(this, "captchaUrl", CAPTCHA_URL + "?t=" + new Date().getTime());
-                // this.captchaUrl = CAPTCHA_URL + "?t=" + new Date().getTime()
+                this.captchaUrl = CAPTCHA_URL + "?t=" + new Date().getTime()
             },
-            login(event) {
-                let methods = this.$options.methods;
+            login() {
+                let self = this;
                 Util.ajax.post("/user/login", {
                     username: this.username,
                     password: this.password,
                     captcha: this.captcha
                 }).then(function (response) {
-                    console.log(response.data);
-                    methods.changeCaptcha();
+                    self.changeCaptcha();
+
+                    self.$Message.loading({
+                        content: '正在加载数据...',
+                        duration: 5
+                    });
+
                 }).catch(function (error) {
                     console.log(error);
                 })
