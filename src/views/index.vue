@@ -59,6 +59,7 @@
     import Vue from 'vue';
     import VueParticles from 'vue-particles';
     import Util from '../libs/util';
+    import Constant from '../libs/constant';
 
     Vue.use(VueParticles);
 
@@ -80,20 +81,19 @@
             },
             login() {
                 let self = this;
+
+                Util.loading(Constant.LOGIN_LOADING);
+
                 Util.ajax.post("/user/login", {
                     username: this.username,
                     password: this.password,
                     captcha: this.captcha
                 }).then(function (response) {
                     self.changeCaptcha();
-
-                    self.$Message.loading({
-                        content: '正在加载数据...',
-                        duration: 5
-                    });
-
+                    Util.closeLoading();
                 }).catch(function (error) {
-                    console.log(error);
+                    Util.closeLoading();
+                    Util.log.info(Constant.LOGIN_TIMEOUT);
                 })
             }
         }
