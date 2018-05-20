@@ -27,10 +27,10 @@
                     <a class="link" href="register">注册账号</a>
                 </div>
                 <form action="" autocomplete="off" @submit.prevent="login">
-                    <a @click="changeCaptcha" title="换一张"><img :src="captchaUrl" class="captcha"></a>
-                    <input name="username" class="input-box" type="text" v-model="username" placeholder="电子邮箱">
-                    <input name="password" class="input-box" type="password" v-model="password" placeholder="密码">
-                    <input name="captcha" class="input-box" type="text" v-model="captcha" placeholder="验证码">
+                    <a @click="changeCaptcha" title="换一张"><img :src="captchaUrl" class="login-captcha"></a>
+                    <input :autofocus="username" v-model="username" name="username" class="input-box" type="text" placeholder="电子邮箱">
+                    <input v-model="password" name="password" class="input-box" type="password" placeholder="密码">
+                    <input v-model="captcha" name="captcha" class="input-box" type="text" placeholder="验证码">
                     <div class="options">
                         <Checkbox v-model="rememberUsername" style="float: left;">&nbsp;记住账号</Checkbox>
                         <a href="/reset" style="float: right;" target="_blank">忘记密码？</a>
@@ -63,12 +63,10 @@
 
     Vue.use(VueParticles);
 
-    let CAPTCHA_URL = "http://manager.sportsdb.cc:9001/user/loginCaptcha";
-
     export default {
         data() {
             return {
-                captchaUrl: CAPTCHA_URL,
+                captchaUrl: Constant.USER.LOGIN_CAPTCHA_URL,
                 username: "",
                 password: "",
                 captcha: "",
@@ -77,24 +75,33 @@
         },
         methods: {
             changeCaptcha() {
-                this.captchaUrl = CAPTCHA_URL + "?t=" + new Date().getTime()
+                this.captchaUrl = Constant.USER.LOGIN_CAPTCHA_URL + "?t=" + new Date().getTime()
             },
             login() {
                 let self = this;
 
-                Util.loading(Constant.LOGIN_LOADING);
+                Util.loading(Constant.USER.LOGIN_LOADING);
 
                 Util.ajax.post("/user/login", {
-                    username: this.username,
-                    password: this.password,
-                    captcha: this.captcha
+                    username: self.username,
+                    password: Util.md5(self.password),
+                    captcha: self.captcha
                 }).then(function (response) {
-                    self.changeCaptcha();
-                    Util.closeLoading();
+                    console.log(response.data);
+                    
+                    if (response.data.status !== 0) {
+                        Util.closeLoading();
+                        Util.log.info(response.data.message);
+                        self.changeCaptcha();
+                        return;
+                    }
+
+                    console.log(response.data);
+
                 }).catch(function (error) {
                     Util.closeLoading();
-                    Util.log.info(Constant.LOGIN_TIMEOUT);
-                })
+                    Util.log.info(Constant.USER.LOGIN_TIMEOUT);
+                });
             }
         }
     };

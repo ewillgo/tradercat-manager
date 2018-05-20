@@ -1,5 +1,6 @@
 import {Message} from 'iview';
 import axios from 'axios';
+import md5 from 'js-md5';
 import env from '../config/env';
 
 let util = {};
@@ -13,6 +14,8 @@ const ajaxUrl = env === 'development' ?
     env === 'production' ?
         'http://manager.tradercat.net' :
         'http://';
+
+util.md5 = md5;
 
 util.log = {};
 util.log.duration = 3;

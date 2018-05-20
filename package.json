@@ -20,9 +20,11 @@
     "iview": "^2.7.4",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vue-particles": "^1.0.9"
+    "vue-particles": "^1.0.9",
+    "js-md5": "^0.7.3"
   },
   "devDependencies": {
+    "js-md5": "^0.7.3",
     "vue-particles": "^1.0.9",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
