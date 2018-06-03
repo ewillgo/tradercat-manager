@@ -67,7 +67,8 @@
         methods: {
 
             changeCaptcha() {
-                this.captchaUrl = Constant.USER.REGISTER_CAPTCHA_URL + "?t=" + new Date().getTime()
+                this.captchaUrl = Constant.USER.REGISTER_CAPTCHA_URL + "?t=" + new Date().getTime();
+                this.captcha = "";
             },
 
             register() {
@@ -108,7 +109,7 @@
                         return;
                     }
 
-                    location.href = "/dashboard?accessToken=" + response.data.accessTokenString;
+                    location.href = "/dashboard?accessToken=" + response.data.data.accessTokenString;
 
                 }).catch(function (error) {
                     Util.closeLoading();
